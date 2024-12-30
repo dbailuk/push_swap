@@ -1,23 +1,24 @@
 #include "../push_swap.h"
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_swap	*tab;
 
-	a = create_stack();
-	b = create_stack();
-
-	parse_args(argc, argv, a);
-	if (!is_sorted(a))
-		sort_stack(a, b);
-	free_stack(a);
-	free_stack(b);
+	if (ac < 2)
+		return (0);
+	tab = (t_swap *)malloc(sizeof(t_swap));
+	if (!tab)
+		return (1);
+	tab->stack_a = parse_args(ac, av);
+	if (!tab->stack_a)
+	{
+		free(tab);
+		return (1);
+	}
+	tab->stack_b = NULL;
+	tab->asize = list_size(tab->stack_a);
+	tab->bsize = 0;
+	add_index(tab->stack_a);
+	check_sort(tab);
 	return (0);
-}
-
-void	print_error_and_exit(void)
-{
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
 }

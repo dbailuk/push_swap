@@ -1,60 +1,34 @@
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
-void	ra(t_stack *a)
+static void	rot(t_list **stack)
 {
-	t_node	*temp;
-	t_node	*current;
+	t_list	*first;
+	t_list	*last;
 
-	if (a->size < 2)
-		return;
-	temp = a->top;
-	a->top = a->top->next;
-	temp->next = NULL;
-	current = a->top;
-	while (current->next)
-		current = current->next;
-	current->next = temp;
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
+	first = *stack;
+	*stack = first->next;
+	first->next = NULL;
+	last = list_last(*stack);
+	last->next = first;
+}
+
+void	ra(t_list **a)
+{
+	rot(a);
 	write(1, "ra\n", 3);
 }
 
-void	rb(t_stack *b)
+void	rb(t_list **b)
 {
-	t_node	*temp;
-	t_node	*current;
-
-	if (b->size < 2)
-		return;
-	temp = b->top;
-	b->top = b->top->next;
-	temp->next = NULL;
-	current = b->top;
-	while (current->next)
-		current = current->next;
-	current->next = temp;
+	rot(b);
 	write(1, "rb\n", 3);
 }
 
-void	rr(t_stack *a, t_stack *b)
+void	rr(t_list **a, t_list **b)
 {
-	if (a->size >= 2)
-	{
-		t_node *temp = a->top;
-		a->top = a->top->next;
-		temp->next = NULL;
-		t_node *current = a->top;
-		while (current->next)
-			current = current->next;
-		current->next = temp;
-	}
-	if (b->size >= 2)
-	{
-		t_node *temp = b->top;
-		b->top = b->top->next;
-		temp->next = NULL;
-		t_node *current = b->top;
-		while (current->next)
-			current = current->next;
-		current->next = temp;
-	}
+	rot(a);
+	rot(b);
 	write(1, "rr\n", 3);
 }

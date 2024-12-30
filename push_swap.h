@@ -5,84 +5,76 @@
 # include <limits.h>
 # include "libft/libft.h"
 
-typedef struct s_node
+typedef struct s_list
 {
-	int				value;      // Original value
-	int				index;      // Rank/index of this value
+	int				content;
+	int				index;
 	int				flag;
-	struct s_node	*next;
-}	t_node;
-
-typedef struct s_stack
-{
-	t_node	*top;
-	int		size;
-}	t_stack;
+	struct s_list	*next;
+}	t_list;
 
 typedef struct s_push
 {
-	int	next;  // The smallest index not yet in place
-	int	max;   // The largest index still under consideration
-	int	mid;   // Midpoint for partitioning
-	int	flag;  // "Partition" identifier
+	int	next;
+	int	max;
+	int	mid;
+	int	flag;
 }	t_push;
 
-/*
-** Basic stack functions
-*/
-t_stack	*create_stack(void);
-void	push_stack(t_stack *stack, int value);
-int		pop_stack(t_stack *stack);
-void	free_stack(t_stack *stack);
-int		is_sorted(t_stack *a);
+typedef struct s_swap
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+	int		asize;
+	int		bsize;
+}	t_swap;
 
-/*
-** Error and Utils
-*/
-void	print_error_and_exit(void);
+/* --------------------
+   List Utils
+--------------------- */
+t_list	*list_new(int content);
+void	list_add_back(t_list **lst, t_list *new_node);
+int		list_size(t_list *lst);
+t_list	*list_last(t_list *lst);
+void	list_clear(t_list **lst);
 
-/*
-** Push_swap operations
-*/
-void	sa(t_stack *a);
-void	sb(t_stack *b);
-void	ss(t_stack *a, t_stack *b);
-void	pa(t_stack *a, t_stack *b);
-void	pb(t_stack *a, t_stack *b);
-void	ra(t_stack *a);
-void	rb(t_stack *b);
-void	rr(t_stack *a, t_stack *b);
-void	rra(t_stack *a);
-void	rrb(t_stack *b);
-void	rrr(t_stack *a, t_stack *b);
+/* --------------------
+   Parsing & indexing
+--------------------- */
+t_list	*parse_args(int ac, char **av);
+void	add_index(t_list *lst);
 
-/*
-** Sorting logic
-*/
-void	sort_stack(t_stack *a, t_stack *b);
-void	sort_3(t_stack *a);
-void	sort_5(t_stack *a, t_stack *b);
+/* --------------------
+   Check & sorting
+--------------------- */
+int		check_sorting(t_list **stack);
+int		check_sorting_a(t_list **stack, int count);
+t_list	*find_min_lst(t_list **stack);
+t_list	*find_max_lst(t_list **stack);
+int		isrevsorted(t_swap *tab);
+void	check_sort(t_swap *tab);
 
-/*
-** Quick Sort approach (new):
-*/
-void	quick_sort(t_stack *a, t_stack *b, int count);
+/* --------------------
+   Sort small & quick
+--------------------- */
+void	sort_2(t_list **stack);
+void	sort_3nbr(t_swap *tab);
+void	sort_5nbr(t_swap *tab);
+void	quick_sort(t_list **a, t_list **b, int count);
 
-/*
-** Additional helper functions (new) for the quick-sort logic:
-**  - check if 'a' is sorted and has 'count' elements
-**  - find the min/max index in a stack
-*/
-int		check_sorting_a(t_stack *a, int count);
-int		find_min_index(t_stack *a);
-int		find_max_index(t_stack *a);
-// Optional: a helper to get bottom node (similar to ft_lstlast)
-t_node	*bottom_of_stack(t_stack *s);
-
-/*
-** Parsing logic
-*/
-void	parse_args(int argc, char **argv, t_stack *a);
-long	ft_atol(const char *str);
+/* --------------------
+   Operations
+--------------------- */
+void	pa(t_list **a, t_list **b);
+void	pb(t_list **a, t_list **b);
+void	sa(t_list **a);
+void	sb(t_list **b);
+void	ss(t_list **a, t_list **b);
+void	ra(t_list **a);
+void	rb(t_list **b);
+void	rr(t_list **a, t_list **b);
+void	rra(t_list **a);
+void	rrb(t_list **b);
+void	rrr(t_list **a, t_list **b);
 
 #endif
