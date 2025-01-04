@@ -6,7 +6,7 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:37:26 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/04 15:37:27 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/04 15:54:25 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 static t_list	*find_min_unindexed(t_list *lst)
 {
-	long	m = LONG_MAX;
-	t_list	*min = NULL;
+	long	m;
+	t_list	*min;
 
+	m = LONG_MAX;
+	min = NULL;
 	while (lst)
 	{
 		if (lst->index == -1 && lst->content < m)
@@ -33,8 +35,9 @@ void	add_index(t_list *lst)
 {
 	t_list	*min;
 	int		i;
-	int		size = list_size(lst);
+	int		size;
 
+	size = list_size(lst);
 	i = 0;
 	while (i < size)
 	{
