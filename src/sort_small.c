@@ -6,7 +6,7 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:37:47 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/04 15:37:48 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/04 15:46:06 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ void	sort_2(t_list **stack)
 
 void	sort_3nbr(t_swap *tab)
 {
-	t_list	*last = list_last(tab->stack_a);
+	t_list	*last;
 
+	last = list_last(tab->stack_a);
 	if (check_sorting(&tab->stack_a))
 		return ;
 	if (isrevsorted(tab))
@@ -47,8 +48,9 @@ void	sort_3nbr(t_swap *tab)
 
 void	sort_5nbr(t_swap *tab)
 {
-	int	len = list_size(tab->stack_a);
+	int	len;
 
+	len = list_size(tab->stack_a);
 	while (len--)
 	{
 		if (tab->stack_a->index == 0 || tab->stack_a->index == 1)

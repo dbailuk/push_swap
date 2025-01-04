@@ -6,7 +6,7 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:37:20 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/04 15:41:45 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/04 15:46:42 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	isrevsorted(t_swap *tab)
 void	check_sort(t_swap *tab)
 {
 	int	len;
-	
+
 	len = list_size(tab->stack_a);
 	if (check_sorting(&tab->stack_a))
 		return ;
