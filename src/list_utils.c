@@ -6,7 +6,7 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:37:31 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/04 15:37:32 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/04 15:52:48 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 t_list	*list_new(int content)
 {
-	t_list	*node = (t_list *)malloc(sizeof(t_list));
+	t_list	*node;
 
+	node = (t_list *)malloc(sizeof(t_list));
 	if (!node)
 		return (NULL);
 	node->content = content;
@@ -27,8 +28,9 @@ t_list	*list_new(int content)
 
 int	list_size(t_list *lst)
 {
-	int	count = 0;
+	int	count;
 
+	count = 0;
 	while (lst)
 	{
 		lst = lst->next;

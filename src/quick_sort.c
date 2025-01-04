@@ -6,7 +6,7 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:37:43 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/04 15:37:44 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/04 15:51:13 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static void	first_partition(t_list **a, t_list **b, t_push *p, int cnt)
 {
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	while (i < cnt)
 	{
 		if ((*a)->index <= p->mid)
