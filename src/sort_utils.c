@@ -43,3 +43,20 @@ t_list	*find_max_lst(t_list **stack)
 	}
 	return (max);
 }
+
+int check_b_conditions(t_list **a, t_list **b, t_push *p)
+{
+    t_list *lastb = list_last(*b);
+
+    if (lastb->index == p->next)
+        rrb(b);
+    else if ((*a)->next && (*a)->next->index == p->next)
+        sa(a);
+    else if ((*a)->next && (*b)->next
+        && (*a)->next->index == p->next
+        && (*b)->next->index == p->next + 1)
+        ss(a, b);
+    else
+        return (0);
+    return (1);
+}

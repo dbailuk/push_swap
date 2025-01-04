@@ -32,35 +32,23 @@ static void	first_partition(t_list **a, t_list **b, t_push *p, int cnt)
 	p->flag++;
 }
 
-static void	find_next(t_list **a, t_list **b, t_push *p)
-{
-	t_list	*lastb;
 
-	if (*b && (*b)->index == p->next)
-		pa(a, b);
-	else if ((*a)->index == p->next)
-	{
-		(*a)->flag = -1;
-		ra(a);
-		p->next++;
-	}
-	else if (*b && list_size(*b) > 2)
-	{
-		lastb = list_last(*b);
-		if (lastb->index == p->next)
-			rrb(b);
-		else if ((*a)->next && (*a)->next->index == p->next)
-			sa(a);
-		else if ((*a)->next && (*b)->next
-			&& (*a)->next->index == p->next
-			&& (*b)->next->index == p->next + 1)
-			ss(a, b);
-		else
-			return ;
-	}
-	else
-		return ;
-	find_next(a, b, p);
+
+static void find_next(t_list **a, t_list **b, t_push *p)
+{
+    if (*b && (*b)->index == p->next)
+        pa(a, b);
+    else if ((*a)->index == p->next)
+    {
+        (*a)->flag = -1;
+        ra(a);
+        p->next++;
+    }
+    else if (*b && list_size(*b) > 2 && check_b_conditions(a, b, p))
+        ;
+    else
+        return ;
+    find_next(a, b, p);
 }
 
 static void	partition_step(t_list **a, t_list **b, t_push *p)
