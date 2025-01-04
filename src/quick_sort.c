@@ -6,7 +6,7 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:37:43 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/04 15:51:13 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/04 15:56:53 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,11 @@ static void	partition_step(t_list **a, t_list **b, t_push *p)
 void	quick_sort(t_list **a, t_list **b, int count)
 {
 	t_push	p;
-	t_list	*mn = find_min_lst(a);
-	t_list	*mx = find_max_lst(a);
+	t_list	*mn;
+	t_list	*mx;
 
+	mn = find_min_lst(a);
+	mx = find_max_lst(a);
 	p.next = mn->index;
 	p.max = mx->index;
 	p.mid = (p.max - p.next) / 2 + p.next;
