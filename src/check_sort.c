@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/04 15:37:20 by dbailuk           #+#    #+#             */
+/*   Updated: 2025/01/04 15:41:45 by dbailuk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 int	check_sorting(t_list **stack)
 {
-	t_list	*tmp = *stack;
+	t_list	*tmp;
 
+	tmp = *stack;
 	while (tmp && tmp->next)
 	{
 		if (tmp->content > tmp->next->content)
@@ -22,9 +35,11 @@ int	check_sorting_a(t_list **stack, int count)
 
 t_list	*find_min_lst(t_list **stack)
 {
-	t_list	*tmp = *stack;
-	t_list	*min = tmp;
+	t_list	*tmp;
+	t_list	*min;
 
+	tmp = *stack;
+	min = tmp;
 	while (tmp)
 	{
 		if (tmp->content < min->content)
@@ -36,9 +51,11 @@ t_list	*find_min_lst(t_list **stack)
 
 t_list	*find_max_lst(t_list **stack)
 {
-	t_list	*tmp = *stack;
-	t_list	*max = tmp;
+	t_list	*tmp;
+	t_list	*max;
 
+	tmp = *stack;
+	max = tmp;
 	while (tmp)
 	{
 		if (tmp->content > max->content)
@@ -50,8 +67,9 @@ t_list	*find_max_lst(t_list **stack)
 
 int	isrevsorted(t_swap *tab)
 {
-	t_list	*tmp = tab->stack_a;
+	t_list	*tmp;
 
+	tmp = tab->stack_a;
 	while (tmp && tmp->next)
 	{
 		if (tmp->content < tmp->next->content)
@@ -63,8 +81,9 @@ int	isrevsorted(t_swap *tab)
 
 void	check_sort(t_swap *tab)
 {
-	int	len = list_size(tab->stack_a);
-
+	int	len;
+	
+	len = list_size(tab->stack_a);
 	if (check_sorting(&tab->stack_a))
 		return ;
 	if (len == 2)
