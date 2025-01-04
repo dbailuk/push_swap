@@ -12,6 +12,7 @@ SRCS	:=	src/main.c \
 			src/sort_small.c \
 			src/quick_sort.c \
 			src/list_utils.c \
+			src/sort_utils.c \
 			src/ops/push_ops.c \
 			src/ops/reverse_rotate_ops.c \
 			src/ops/rotate_ops.c \
