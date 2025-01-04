@@ -6,7 +6,7 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:37:39 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/04 15:37:40 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/04 15:49:03 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static int	is_valid(const char *s)
 {
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	if ((s[0] == '-' || s[0] == '+') && s[1])
 		i++;
 	while (s[i])
@@ -40,11 +41,13 @@ static int	dup_check(t_list *lst, int val)
 
 t_list	*parse_args(int ac, char **av)
 {
-	t_list	*head = NULL;
+	t_list	*head;
 	t_list	*node;
 	long	num;
-	int		i = 1;
+	int		i;
 
+	head = NULL;
+	i = 1;
 	while (i < ac)
 	{
 		if (!is_valid(av[i]))
