@@ -32,61 +32,29 @@ static void	first_partition(t_list **a, t_list **b, t_push *p, int cnt)
 	p->flag++;
 }
 
-
-
-static void find_next(t_list **a, t_list **b, t_push *p)
+void	find_next(t_list **a, t_list **b, t_push *p)
 {
-    if (*b && (*b)->index == p->next)
-        pa(a, b);
-    else if ((*a)->index == p->next)
-    {
-        (*a)->flag = -1;
-        ra(a);
-        p->next++;
-    }
-    else if (*b && list_size(*b) > 2 && check_b_conditions(a, b, p))
-        ;
-    else
-        return ;
-    find_next(a, b, p);
+	if (*b && (*b)->index == p->next)
+		pa(a, b);
+	else if ((*a)->index == p->next)
+	{
+		(*a)->flag = -1;
+		ra(a);
+		p->next++;
+	}
+	else if (*b && list_size(*b) > 2 && check_b_conditions(a, b, p))
+		;
+	else
+		return ;
+	find_next(a, b, p);
 }
 
 static void	partition_step(t_list **a, t_list **b, t_push *p)
 {
-	int	sz_b;
-	int	i;
-	int	f;
-
-	if (!(*b) || list_size(*b) == 0)
-	{
-		f = (*a)->flag;
-		while (*a && (*a)->flag == f && f != -1)
-		{
-			if ((*a)->index != p->next)
-				pb(a, b);
-			find_next(a, b, p);
-		}
-		if (*b)
-			p->max = find_max_lst(b)->index;
-	}
+	if (!(*b) || !list_size(*b))
+		handle_empty_b(a, b, p);
 	else
-	{
-		sz_b = list_size(*b);
-		i = -1;
-		while (++i < sz_b && list_size(*b))
-		{
-			if ((*b)->index == p->next)
-				find_next(a, b, p);
-			else if ((*b)->index >= p->mid)
-			{
-				(*b)->flag = p->flag;
-				pa(a, b);
-			}
-			else
-				rb(b);
-		}
-		p->max = p->mid;
-	}
+		handle_nonempty_b(a, b, p);
 	p->mid = (p->max - p->next) / 2 + p->next;
 	p->flag++;
 }

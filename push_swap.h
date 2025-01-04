@@ -65,7 +65,10 @@ t_list	*find_min_lst(t_list **stack);
 t_list	*find_max_lst(t_list **stack);
 int		isrevsorted(t_swap *tab);
 void	check_sort(t_swap *tab);
-int check_b_conditions(t_list **a, t_list **b, t_push *p);
+int		check_b_conditions(t_list **a, t_list **b, t_push *p);
+void	handle_nonempty_b(t_list **a, t_list **b, t_push *p);
+void	handle_empty_b(t_list **a, t_list **b, t_push *p);
+void	find_next(t_list **a, t_list **b, t_push *p);
 /* --------------------
    Sort small & quick
 --------------------- */
