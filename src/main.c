@@ -12,13 +12,25 @@
 
 #include "../push_swap.h"
 
+void	free_list(t_list *lst)
+{
+	t_list	*tmp;
+
+	while (lst)
+	{
+		tmp = lst->next;
+		free(lst);
+		lst = tmp;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_swap	*tab;
 
 	if (ac < 2)
 		return (0);
-	tab = (t_swap *)malloc(sizeof(t_swap));
+	tab = malloc(sizeof(t_swap));
 	if (!tab)
 		return (1);
 	tab->stack_a = parse_args(ac, av);
@@ -32,5 +44,8 @@ int	main(int ac, char **av)
 	tab->bsize = 0;
 	add_index(tab->stack_a);
 	check_sort(tab);
+	free_list(tab->stack_a);
+	free_list(tab->stack_b);
+	free(tab);
 	return (0);
 }
