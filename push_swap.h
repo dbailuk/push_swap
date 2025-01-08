@@ -6,7 +6,7 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:37:54 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/04 15:37:55 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/08 12:28:15 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,7 @@ void	rr(t_list **a, t_list **b);
 void	rra(t_list **a);
 void	rrb(t_list **b);
 void	rrr(t_list **a, t_list **b);
+
+void	print_error_and_exit(void);
 
 #endif

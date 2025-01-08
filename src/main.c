@@ -6,11 +6,17 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:37:35 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/04 15:37:36 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/08 12:30:21 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+void	print_error_and_exit(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
 
 void	free_list(t_list *lst)
 {
@@ -37,7 +43,7 @@ int	main(int ac, char **av)
 	if (!tab->stack_a)
 	{
 		free(tab);
-		return (1);
+		print_error_and_exit();
 	}
 	tab->stack_b = NULL;
 	tab->asize = list_size(tab->stack_a);
