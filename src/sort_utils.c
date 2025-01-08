@@ -6,7 +6,7 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 16:00:05 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/04 16:18:49 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/08 13:00:54 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	handle_empty_b(t_list **a, t_list **b, t_push *p)
 {
 	int	f;
 
+	if (!a || !b)
+		print_error_and_exit();
 	f = (*a)->flag;
 	while (*a && (*a)->flag == f && f != -1)
 	{

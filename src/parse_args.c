@@ -6,7 +6,7 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:37:39 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/04 15:49:03 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/08 13:35:10 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,11 @@ t_list	*parse_args(int ac, char **av)
 	while (i < ac)
 	{
 		if (!is_valid(av[i]))
-			return (list_clear(&head), NULL);
+			print_error_and_exit();
 		num = atol(av[i]);
 		if (num > INT_MAX || num < INT_MIN || dup_check(head, (int)num))
-			return (list_clear(&head), NULL);
+			print_error_and_exit();
 		node = list_new((int)num);
-		if (!node)
-			return (list_clear(&head), NULL);
 		list_add_back(&head, node);
 		i++;
 	}

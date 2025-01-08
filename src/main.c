@@ -6,7 +6,7 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:37:35 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/08 12:30:21 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/08 13:01:33 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 		return (0);
 	tab = malloc(sizeof(t_swap));
 	if (!tab)
-		return (1);
+		print_error_and_exit();
 	tab->stack_a = parse_args(ac, av);
 	if (!tab->stack_a)
 	{

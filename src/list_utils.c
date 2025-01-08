@@ -6,7 +6,7 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:37:31 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/04 15:52:48 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/08 13:00:16 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*list_new(int content)
 
 	node = (t_list *)malloc(sizeof(t_list));
 	if (!node)
-		return (NULL);
+		print_error_and_exit();
 	node->content = content;
 	node->index = -1;
 	node->flag = 0;
@@ -53,12 +53,14 @@ void	list_add_back(t_list **lst, t_list *new_node)
 	t_list	*tail;
 
 	if (!lst || !new_node)
-		return ;
+		print_error_and_exit();
 	if (!*lst)
 		*lst = new_node;
 	else
 	{
 		tail = list_last(*lst);
+		if (!tail)
+			print_error_and_exit();
 		tail->next = new_node;
 	}
 }

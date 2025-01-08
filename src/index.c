@@ -6,7 +6,7 @@
 /*   By: dbailuk <dbailuk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:37:26 by dbailuk           #+#    #+#             */
-/*   Updated: 2025/01/04 15:54:25 by dbailuk          ###   ########.fr       */
+/*   Updated: 2025/01/08 12:59:30 by dbailuk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static t_list	*find_min_unindexed(t_list *lst)
 	long	m;
 	t_list	*min;
 
+	if (!lst)
+		print_error_and_exit();
 	m = LONG_MAX;
 	min = NULL;
 	while (lst)
