@@ -52,7 +52,7 @@ t_list	*parse_args(int ac, char **av)
 	{
 		if (!is_valid(av[i]))
 			print_error_and_exit();
-		num = atol(av[i]);
+		num = ft_atoi(av[i]);
 		if (num > INT_MAX || num < INT_MIN || dup_check(head, (int)num))
 			print_error_and_exit();
 		node = list_new((int)num);

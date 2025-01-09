@@ -4,6 +4,10 @@ NAME	:= push_swap
 CC		:= cc
 CFLAGS	:= -Wall -Wextra -Werror
 
+# Libft settings
+LIBFT_DIR	:= libft
+LIBFT		:= $(LIBFT_DIR)/libft.a
+
 # Source files
 SRCS	:=	src/main.c \
 			src/parse_args.c \
@@ -18,15 +22,19 @@ SRCS	:=	src/main.c \
 			src/ops/rotate_ops.c \
 			src/ops/swap_ops.c
 
-# Object files (same names but .o instead of .c)
+# Object files
 OBJS	:= $(SRCS:.c=.o)
 
 # Default rule
 all: $(NAME)
 
 # Linking step: create the executable from object files
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+
+# Build libft
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
 # Compile .c -> .o
 %.o: %.c
@@ -35,10 +43,12 @@ $(NAME): $(OBJS)
 # Remove object files
 clean:
 	rm -f $(OBJS)
+	make -C $(LIBFT_DIR) clean
 
 # Remove object files + the executable
 fclean: clean
 	rm -f $(NAME)
+	make -C $(LIBFT_DIR) fclean
 
 # Rebuild everything
 re: fclean all
